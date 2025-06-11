@@ -13,7 +13,7 @@ router.post(`/generate`, async (req, res) => {
       stream: false,
     });
 
-    console.log(response.data);
+    // console.log(response.data);
 
     if (!response.data) {
       return res.status(500).json({
