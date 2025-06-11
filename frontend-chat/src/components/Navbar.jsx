@@ -1,8 +1,14 @@
 import logoImage from "/image/logo.png";
 import { IoLogoGithub } from "react-icons/io";
 import { Button } from "@/components/ui/button";
+import { userContext } from "../context/userAuth";
+import { useContext } from "react";
+import AvatarIcon from "./AvatarIcon";
 
 function Navbar() {
+  const { user } = useContext(userContext);
+  console.log(user);
+
   return (
     <>
       <div className="h-17 border rounded-md border-zinc-800 ">
@@ -15,24 +21,39 @@ function Navbar() {
             </div>
             <div className="flex gap-10 text-[1.2em]">
               <a href="/">
-                <Button variant="ghost">Home</Button>
+                <Button className="font-bold" variant="ghost">
+                  Home
+                </Button>
               </a>
               <a href="/chat">
-                <Button variant="ghost">Chat</Button>
+                <Button className="font-bold" variant="ghost">
+                  Chat
+                </Button>
               </a>
               <a href="/about">
-                <Button variant="ghost">About</Button>
+                <Button className="font-bold" variant="ghost">
+                  About
+                </Button>
               </a>
             </div>
-            <div className="flex gap-4">
-              <IoLogoGithub className="-mb-2 size-[2em]" />
-              <div className="text-black -mt-1">
-                <a href="/login">
-                  <Button variant="outline" className="cursor-pointer">
-                    Login
-                  </Button>
-                </a>
-              </div>
+            <div className="flex gap-5">
+              <a
+                href="https://github.com/Amit4218/simple-local-ai-chat"
+                target="_blank"
+              >
+                <IoLogoGithub className="mt-1 size-[2.3em]" />
+              </a>
+              {user == null ? (
+                <div className="text-black -mt-1">
+                  <a href="/auth/login">
+                    <Button variant="outline" className="cursor-pointer ">
+                      Login
+                    </Button>
+                  </a>
+                </div>
+              ) : (
+                <AvatarIcon />
+              )}
             </div>
           </div>
         </nav>

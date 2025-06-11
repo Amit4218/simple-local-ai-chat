@@ -33,38 +33,43 @@ const Chat = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-4">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold">AI Chat</h2>
-        <button
-          onClick={handleLogout}
-          className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-        >
-          Logout
-        </button>
-      </div>
-
-      <form onSubmit={sendMessage} className="space-y-4">
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask anything..."
-          className="w-full border p-2 rounded"
-          name="prompt"
-        />
-        <button type="submit" className="bg-indigo-500 text-white p-2 rounded">
-          Send
-        </button>
-      </form>
-
-      {aiResponse && (
-        <div className="mt-6 p-4 bg-gray-100 rounded shadow">
-          <p>
-            <strong>AI:</strong> {aiResponse}
-          </p>
+    <>
+      <div className="max-w-2xl mx-auto mt-10 p-4">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-semibold">AI Chat</h2>
+          <button
+            onClick={handleLogout}
+            className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+          >
+            Logout
+          </button>
         </div>
-      )}
-    </div>
+
+        <form onSubmit={sendMessage} className="space-y-4">
+          <textarea
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Ask anything..."
+            className="w-full border p-2 rounded"
+            name="prompt"
+          />
+          <button
+            type="submit"
+            className="bg-indigo-500 text-white p-2 rounded"
+          >
+            Send
+          </button>
+        </form>
+
+        {aiResponse && (
+          <div className="mt-6 p-4 bg-gray-100 rounded shadow">
+            <p>
+              <strong>AI:</strong> {aiResponse}
+            </p>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

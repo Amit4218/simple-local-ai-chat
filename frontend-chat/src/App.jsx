@@ -1,24 +1,24 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "../src/components/pages/Login";
-import Register from "./components/pages/Register";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Chat from "./components/pages/Chat";
-import PrivateRoute from "./components/PrivateRoute";
 import Home from "./components/pages/Home";
-import { ToastContainer } from "react-toastify";
+import About from "./components/pages/About";
+import AuthRoute from "./components/pages/AuthRoute";
+import Navbar from "./components/Navbar";
 
 function App() {
+  const location = useLocation();
+  const hideNavbar = location.pathname.startsWith("/auth");
+
   return (
-    <BrowserRouter>
+    <>
+      {!hideNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route element={<PrivateRoute />}>
-          <Route path="/chat" element={<Chat />} />
-        </Route>
+        <Route path="/about" element={<About />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/auth/*" element={<AuthRoute />} />
       </Routes>
-      <ToastContainer theme="dark" autoClose={700}  />
-    </BrowserRouter>
+    </>
   );
 }
 
