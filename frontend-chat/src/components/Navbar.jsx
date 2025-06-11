@@ -46,7 +46,7 @@ function Navbar() {
               {user == null ? (
                 <div className="text-black -mt-1">
                   <a href="/auth/login">
-                    <Button variant="outline" className="cursor-pointer ">
+                    <Button variant="" className="bg-zinc-900 hover:bg-amber-50 hover:text-black font-bold  cursor-pointer mt-2">
                       Login
                     </Button>
                   </a>
