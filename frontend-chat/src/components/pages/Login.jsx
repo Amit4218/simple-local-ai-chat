@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -29,7 +29,7 @@ const Login = () => {
         "http://localhost:8080/api/vi/user/login",
         formData
       );
-      setUser(res.data);
+      setUser(res.data.user);
       localStorage.setItem("token", res.data.token);
       navigate("/chat");
     } catch (err) {
@@ -73,12 +73,14 @@ const Login = () => {
                     }}
                     required
                   />
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                  <Link
+                    to={"#"}
+                    className="ml-auto inline-block text-sm
+                    underline-offset-4 hover:underline"
                   >
+                    {" "}
                     Forgot your password?
-                  </a>
+                  </Link>
                 </div>
               </div>
             </form>
@@ -99,11 +101,11 @@ const Login = () => {
               Login with Github
             </Button>
             <CardAction>
-              <a href="/register">
+              <Link to={"/auth/register"}>
                 <Button className="text-white text-xs" variant="link">
                   Don't have an account ? Sign Up
                 </Button>
-              </a>
+              </Link>
             </CardAction>
           </CardFooter>
         </Card>

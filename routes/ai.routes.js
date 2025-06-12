@@ -5,11 +5,11 @@ const router = express.Router();
 
 router.post(`/generate`, async (req, res) => {
   try {
-    const { prompt } = req.body;
+    const { userPrompt, selectedModel } = req.body;
 
     const response = await axios.post(`${process.env.AI_API}/api/generate`, {
-      model: "gemma3:1b",
-      prompt,
+      model: selectedModel,
+      prompt: userPrompt,
       stream: false,
     });
 

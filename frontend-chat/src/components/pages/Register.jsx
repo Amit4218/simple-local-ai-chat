@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -70,12 +70,6 @@ const Register = () => {
                     }}
                     required
                   />
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
                 </div>
               </div>
             </form>
@@ -96,11 +90,11 @@ const Register = () => {
               Login with Github
             </Button>
             <CardAction>
-              <a href="/auth/login">
+              <Link to={"/auth/login"}>
                 <Button className="text-white text-xs" variant="link">
                   Already a member ? Login
                 </Button>
-              </a>
+              </Link>
             </CardAction>
           </CardFooter>
         </Card>
